@@ -1,0 +1,13 @@
+c5b0e9b9d7e95d4d0f93e26c87880ba2 *DESCRIPTION
+26ca4fd97ce1c3836f86231fb5af9abd *NAMESPACE
+86b788808fc2c1f010f32682b2783626 *R/knap.r
+7bbc057e29832991c4e6b251581b18d0 *R/nlde.R
+537f4716a9cad0d996e17d345bf7e058 *R/partitioning.R
+52f2b2114f4e2ee88637d50b9d373b00 *R/subsetsum.r
+4d5b3d71b322f3df201f0fd52a01f77d *build/partial.rdb
+53b8fc12d5f61e64f09a0c0713297455 *man/get.knapsack.Rd
+7c8e285bfcd0b57fed2c1a6d8ae2d5fa *man/get.partitions.Rd
+d706a4970370f0f31bec1a01f9e6ef03 *man/get.subsetsum.Rd
+6e10437e10e650d78e4e79b1e8311f70 *man/nilde-package.Rd
+f4a708c218e0805fc88f6cdac94da24d *man/nlde.Rd
+47df97dd23376918df7d28477ea58dc3 *man/print.partitions.Rd
