@@ -65,7 +65,8 @@ nlde <- function(a,n,M=NULL,at.most=TRUE,option=0){
 ## vector of s are unknowns to be found
 ## 'at.most' is logical with TRUE standing for constructing all partitions of n into at most M parts and FALSE for exactly M parts  
 ## 'M' is a positive integer, M <= n
-## 'option' when set to '1' (or any positive number) solves nlde 0-1 problem (nlde has only 0 -1 solutions)
+## 'option' when set to '1' solves nlde 0-1 problem (nlde has only 0 -1 solutions),
+##          when 'option=2' (or > 2) solves 0-1 NLD inequality
 
  if (length(a) < 2) {stop("length of vector 'a' has to be more than 1")}
  if (!isTRUE(all(a == floor(a))) || !isTRUE(all(a > 0))) stop("'a' must only contain positive integer values")
@@ -77,9 +78,18 @@ nlde <- function(a,n,M=NULL,at.most=TRUE,option=0){
        if (M > n) stop("'M' has to be less or equal to 'n'")
    }
  if (option < 0) warning("'option' must be 0 or positive, ignored") 
+
+
   ra <- rank(a, ties.method= "first")
   a <- sort(a)
   l <- length(a)
+  if (option > 1) { ## solving 01 inequality...
+     a1 <- c(a[ra],1) ## adding a slack variable 
+     ra <- rank(a1, ties.method= "first")
+     M <- floor(n/min(a1))
+     a <- sort(a1)
+     l <- length(a1)   
+  }
 
   out <-numeric(0)
   ## solving nlde...
@@ -90,11 +100,14 @@ nlde <- function(a,n,M=NULL,at.most=TRUE,option=0){
                 b <- c(floor((n-M*a[1])/(a[l]-a[1])), rep(NA, l-3))
                 out <- recursive.fn2(numeric(0), b,a,n,M)
            }
+
   if (length(out)==0) 
        {out<- NULL; n.sol <-0 } 
   else {
         dim(out) <- c(l,length(out)/l)
         out <- as.matrix(out[ra,],l,length(out)/l) ## going back to original unsorted coefficients
+        if (option > 1)
+              out <- out[1:(l-1),] ## remove the last row of slacks
         if (option > 0){
               check01 <- function(vec) all(vec== 0 | vec== 1)
               ind <- apply(out,2,check01)
@@ -103,7 +116,7 @@ nlde <- function(a,n,M=NULL,at.most=TRUE,option=0){
         if (length(out)==0) {
               out <- NULL; n.sol <-0           
           } else {
-             rownames(out) <- paste("s", c(1:l), sep="")
+             rownames(out) <- paste("s", c(1:dim(out)[1]), sep="")
              colnames(out) <- paste(c("sol."), seq(1:dim(out)[2]), sep="")    
              n.sol <- ncol(out)
             }

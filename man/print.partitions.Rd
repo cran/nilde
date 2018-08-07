@@ -24,7 +24,7 @@
 
 
 \author{
-Natalya Pya <nat.pya@gmail.com>
+Natalya Pya Arnqvist <nat.pya@gmail.com>
 }
 
 
