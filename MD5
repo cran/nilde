@@ -1,10 +1,13 @@
-89571346f34f3bd14a57c597f550dd71 *DESCRIPTION
-26ca4fd97ce1c3836f86231fb5af9abd *NAMESPACE
+d6d22b2f7a4699ec68d0be5a039d4306 *DESCRIPTION
+951c65be7bfa4aba996c9212c7facbb8 *NAMESPACE
+7c0b44a90fc56944fc4fe8ca7b173aa0 *R/binpacking.r
+9aa4ae687d8a21a2f856a98e8057c1eb *R/globals.r
 86b788808fc2c1f010f32682b2783626 *R/knap.r
 0f11426bb166012dd5242fdb5970047d *R/nlde.R
 537f4716a9cad0d996e17d345bf7e058 *R/partitioning.R
 52f2b2114f4e2ee88637d50b9d373b00 *R/subsetsum.r
-e6d7f39a7e9cc22b6b7535032a5ae2a6 *build/partial.rdb
+32b95f7417b0494c0b8e988f5102ea13 *build/partial.rdb
+5d4d49a9de87f1abdbd84f01f9266d4e *man/bin.packing.Rd
 53b8fc12d5f61e64f09a0c0713297455 *man/get.knapsack.Rd
 7c8e285bfcd0b57fed2c1a6d8ae2d5fa *man/get.partitions.Rd
 d706a4970370f0f31bec1a01f9e6ef03 *man/get.subsetsum.Rd

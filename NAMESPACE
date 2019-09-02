@@ -9,7 +9,8 @@ export(get.partitions,
        print.partitions,
        nlde, print.nlde,
        get.knapsack, print.knapsack,
-       get.subsetsum, print.subsetsum)
+       get.subsetsum, print.subsetsum,
+       bin.packing)
 
 
 S3method(print, partitions)
