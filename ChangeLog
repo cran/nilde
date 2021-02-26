@@ -1,0 +1,7 @@
+
+1.1-4 
+
+* tsp_solver() function has been added. This solves a travelling salesperson problem via combining heuristics and a linear Diophantine equation relaxation. 
+
+* get.knapsack: a bug fixed with checking for 0-1 and bounded solutions
+

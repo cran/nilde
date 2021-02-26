@@ -73,5 +73,5 @@ b4 <- nlde(a=c(70,60,50,33,33,33,11,7,3),n=100,at.most=TRUE,option=2)
 
 
 }
-
+\keyword{optimize}% at least one, from doc/KEYWORDS
 

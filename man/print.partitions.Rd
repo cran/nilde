@@ -3,6 +3,7 @@
 \alias{print.nlde}
 \alias{print.knapsack}
 \alias{print.subsetsum}
+\alias{print.tsp_solver}
 %- Also NEED an `\alias' for EACH other topic documented here.
 \title{Print partitions object.}
 \description{ The default print method for a \code{partitions}, \code{nlde} objects. 
@@ -12,11 +13,12 @@
 \method{print}{nlde}(x, ...)
 \method{print}{knapsack}(x, ...)
 \method{print}{subsetsum}(x, ...)
+\method{print}{tsp_solver}(x, ...)
 }
 %- maybe also `usage' for other objects documented here.
 \arguments{ 
 \item{x, ...}{ objects of class \code{partitions}, \code{nlde}, \code{knapsack}, \code{subsetsum} as produced by \code{get.partitions()}, 
-    \code{nlde()}, \code{get.knapsack()}, \code{get.subsetsum()} correspondingly.}
+    \code{nlde()}, \code{get.knapsack()}, \code{get.subsetsum()}, \code{tsp_solver()} correspondingly.}
 }
 \details{ Prints the number of partitions/solutions obtained and all resulted partitions/solutions themselves. 
 

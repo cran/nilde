@@ -51,8 +51,7 @@ Rashid Makarov
 \references{
   Martello, S. and Toth, P. (1990) Knapsack Problems: Algorithms and Computer Implementations, Wiley, Chichester, 1990.
 
-  Voinov, V., Makarov, R., Voinov, Y. (2019) An exact polynomial in time solution of the one-dimensional bin-packing problem. 
-To be published in Proccedings of the ASMDA 2019 Conference, June 11-14, Florence, Italy.
+   Voinov, V., Makarov, R., Voinov, Y. (2019) An exact polynomial in time solution of the one-dimensional bin-packing problem. In: Christos H Skiadas (ed.) Proceedings of the ASMDA 2019, published by ISAST (Int. Society for the Advancement of Science and Technology), December 2019, pp. 787-798.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -73,6 +72,6 @@ g$min.bins # minimum number of bins
 g$solution # solutions
 }
 
-
+\keyword{optimize}% at least one, from doc/KEYWORDS
 
 

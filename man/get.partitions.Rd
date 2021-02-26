@@ -45,5 +45,5 @@ b
 colSums(b$partitions)
 
 }
-
+\keyword{optimize}% at least one, from doc/KEYWORDS
 

@@ -61,7 +61,7 @@ get.subsetsum <- function(a,n,M=NULL,problem="subsetsum01", bounds=NULL){
 ## given as set of pos integers (a) and a pos integer n, does any non-empty subset sum to n?
 ## 'a' is an l-vector of positive integers with l>= 2
 ## 'n' is positive integer  
-## 'M' is a positive integer, the maximum number of summands, M <= n
+## 'M' is a positive integer, the maximum number of summands, M <= l
 ## 'problem' is one of the two problems to be solved: "subsetsum01" (default) for a 0-1 subset sum problem, 
 ##         or "bsubsetsum" a bounded subset sum problem, 
 ## 'bounds' is an l-vector of positive integers, bounds of s_i, i.e. 0 <= s_i <= b_i
@@ -70,9 +70,10 @@ get.subsetsum <- function(a,n,M=NULL,problem="subsetsum01", bounds=NULL){
  if (!isTRUE(all(a == floor(a))) || !isTRUE(all(a > 0))) stop("'a' must only contain positive integer values")
  if (length(n) >1) {stop("'n' has to be a positive integer")}
  if (!isTRUE(n == floor(n)) || !isTRUE(n > 0)) {stop("'n' has to be a positive integer")}
+ l <- length(a)
  if (is.null(M)) M <- floor(n/min(a))
  else { if (!isTRUE(M == floor(M)) || !isTRUE(M > 0)) {stop("'M' has to be a positive integer")}
-       if (M > n) stop("'M' has to be less or equal to 'n'")
+       if (M > l) stop("'M' has to be less or equal to the length of 'a'")
    }
 
  if (!(problem %in% c("subsetsum01", "bsubsetsum")))  stop("unknown problem is used") 
@@ -82,7 +83,6 @@ get.subsetsum <- function(a,n,M=NULL,problem="subsetsum01", bounds=NULL){
   ra <- rank(a, ties.method= "first")
   a <- sort(a)
   bounds <- bounds[ra]
-  l <- length(a)
   out <-numeric(0)
 
   if (problem=="subsetsum01"){

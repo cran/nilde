@@ -8,6 +8,8 @@ importFrom("stats", "printCoefmat")
 export(get.partitions,
        print.partitions,
        nlde, print.nlde,
+       tsp_solver,
+       print.tsp_solver,
        get.knapsack, print.knapsack,
        get.subsetsum, print.subsetsum,
        bin.packing)
@@ -17,3 +19,4 @@ S3method(print, partitions)
 S3method(print, nlde)
 S3method(print, knapsack)
 S3method(print, subsetsum)
+S3method(print, tsp_solver)

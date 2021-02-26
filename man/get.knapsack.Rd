@@ -78,16 +78,15 @@ colSums(b4$solutions*c(4,3,3))
 ## checking constraint...
 colSums(b4$solutions*c(3,2,2))
 
-\donttest{
+\dontrun{
 b5 <- get.knapsack(a=c(100:106),n=2999,objective=c(200:206),problem="uknap")
 b5$p.n ## total number of solutions
 options(max.print=5E5)
 print(b5)
 
+  }
 }
-
-
-}
+\keyword{optimize}% at least one, from doc/KEYWORDS
 
 
 

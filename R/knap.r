@@ -41,18 +41,22 @@ get.knapsack <- function(objective,a,n,problem="uknap", bounds=NULL){
           dim(out) <- c(l1,length(out)/l1)
           out <- as.matrix(out[ra,],l1,length(out)/l1) ## going back to original unsorted coefficients
           out <- out[1:l,] ## remove the last row of slacks
-          out1 <- out
-          obj.values <- colSums(out1*objective)
-          ind <- which(obj.values==max(colSums(out1*objective)))
-          out <- as.matrix(out1[,ind])                  
+         # out1 <- out
+         # obj.values <- colSums(out1*objective)
+         # ind <- which(obj.values==max(obj.values))
+         # out <- as.matrix(out1[,ind])                  
           if (problem=="knap01"){
               check01 <- function(vec) all(vec== 0 | vec== 1)
               ind <- apply(out,2,check01)
               out <- as.matrix(out[,ind])
+              obj.values <- colSums(out*objective)
+              out <- as.matrix(out[,which(obj.values==max(obj.values))]) 
           } else if (problem=="bknap"){
                checkb <- function(vec,bounds) all(vec<= bounds)
                ind <- apply(out,2,checkb,bounds=bounds)
                out <- as.matrix(out[,ind])
+               obj.values <- colSums(out*objective)
+               out <- as.matrix(out[,which(obj.values==max(obj.values))]) 
              }
           if (length(out)==0) {
               out <- NULL; n.sol <-0           

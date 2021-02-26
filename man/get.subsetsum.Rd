@@ -62,7 +62,7 @@ b4 <- get.subsetsum(a=c(30,29,32,31,33),M=5,n=91,problem="bsubsetsum",
 b4
 colSums(b4$solutions*c(30,29,32,31,33))
 }
-
+\keyword{optimize}% at least one, from doc/KEYWORDS
 
 
 

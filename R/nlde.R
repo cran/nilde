@@ -43,13 +43,15 @@
      S <- rep(0,0)
      d <- 0
      if(length(b)) {
-        for( i in seq(0,b[1]) ) {
+       if (sum(is.finite(b))==length(b)) {
+         for( i in seq(0,b[1]) ) {
             if (length(b) >1){
-              d<-sum(w*(a[length(a):(length(a)-length(w)+1)]-a[1]))+i*(a[length(b)+1] -a[1])
+                d<-sum(w*(a[length(a):(length(a)-length(w)+1)]-a[1]))+i*(a[length(b)+1] -a[1])
                 b[2] <- max(0, floor((n-M*a[1]-d)/(a[length(b)]-a[1])) ) 
             }
             S <- c(S, Recall( c(w,i), b[-1],a,n,M))
-        }
+         }
+       } else S <- c(S, Recall( c(w,0), b[-1],a,n,M)) # return(fn2(rev(w),a,n,M)) ?????? most probably not correct here!!!!
      } else {
           return(fn2(rev(w),a,n,M))
      }
