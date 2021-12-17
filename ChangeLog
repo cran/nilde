@@ -1,3 +1,11 @@
+1.1-6 
+* tsp_solver: bug fixed with checking column-wise degree constraints  
+
+
+1.1-5
+* tsp_solver: lower_bound and upper_bounds can now be extracted as output values of the function
+
+
 
 1.1-4 
 

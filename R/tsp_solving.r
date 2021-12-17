@@ -1,5 +1,6 @@
+
 ########################################
-## solving TSP using get.subsetsum()...
+## _v1.1-6: solving TSP using get.subsetsum()...
 ########################################
 
 tsp_solver <- function(data, labels=NULL,cluster=0,upper_bound=NULL, lower_bound=NULL,  ## symmetric=FALSE,
@@ -15,7 +16,7 @@ tsp_solver <- function(data, labels=NULL,cluster=0,upper_bound=NULL, lower_bound
 ## 'labels' is an n vector of optional city labels. If not given, labels are taken from 'data'.
 ## 'symmetrics' is logical indicating if TSP is symmetric or not (default).
 ## 'cluster': Degree constraints can be checked in parallel using parLapply from the parallel package.
-## 'cluster' is either '0'(default) for no parallel computing to be used; or '1' (default) for one less than
+## 'cluster' is either '0'(default) for no parallel computing to be used; or '1' for one less than
 ## the number of cores; or user-supplied cluster on which to do checking.(a cluster here can be some cores of a single machine).
 ## 'method' is heuristic method used in TSP::solve_TSP() (default: cheapest_insertion)
 ## 'upper_bound' is a positive integer, an upper bound of the tour length (cost function), if not supplied (default: NULL) heuristic solution is obtained using TSP::solve_TSP(data,method).
@@ -100,6 +101,10 @@ tsp_solver <- function(data, labels=NULL,cluster=0,upper_bound=NULL, lower_bound
           stop("'upper_bound' must be larger that lower_bound") 
  }
 
+ object <- list()
+ object$lower_bound <- lower_bound
+ object$upper_bound <- upper_bound
+
  posle_sol <- vector(mode = "list", length = upper_bound-lower_bound+1) ## initializing an empty list of solutions
  posle_length <- rep(NA, upper_bound-lower_bound+1) ## initializing a vector of lengths
 
@@ -145,7 +150,9 @@ tsp_solver <- function(data, labels=NULL,cluster=0,upper_bound=NULL, lower_bound
                                     x <- NULL ## setting NULL is the solution doesn't satisfy degree const  
                                 else x                                    
                                   }, n_cities)
-       list_sol_dconst <- list_sol_dconst[-which(parallel::parSapply(cl,list_sol_dconst, is.null))] ## removing NULLs from the list
+       ind <- which(parallel::parSapply(cl,list_sol_dconst, is.null))
+       if (length(ind)!=0)
+           list_sol_dconst <- list_sol_dconst[-which(parallel::parSapply(cl,list_sol_dconst, is.null))] ## removing NULLs from the list
      } else{ ## cl= NULL
         ## then creating list of solutions as matrices...
         list_sol_mats <- lapply(list_sol,function(x,ind_na,n_cities) {
@@ -160,7 +167,9 @@ tsp_solver <- function(data, labels=NULL,cluster=0,upper_bound=NULL, lower_bound
                                     x <- NULL ## setting NULL is the solution doesn't satisfy degree const  
                                else x                                    
                                   }, n_cities)
-        list_sol_dconst <- list_sol_dconst[-which(sapply(list_sol_dconst, is.null))] ## removing NULLs from the list
+        ind <- which(sapply(list_sol_dconst, is.null))
+        if (length(ind)!=0)
+          list_sol_dconst <- list_sol_dconst[-which(sapply(list_sol_dconst, is.null))] ## removing NULLs from the list
        }
        rm(list_sol_mats) # save space
    ## 4.(Subtour elimination) Remove solutions that contain subtours...
@@ -237,7 +246,7 @@ tsp_solver <- function(data, labels=NULL,cluster=0,upper_bound=NULL, lower_bound
 
  # tours <- posle_sol[[which(posle_length==min(posle_length,na.rm=TRUE))]]
  # tour_length <- min(posle_length,na.rm=TRUE))
-  object <- list()
+ # object <- list()
   object$coming_solutions <- posle_sol
   object$coming_tour_lengths <- posle_length
   object$iter <- iter ## number of L0 gone through

@@ -87,7 +87,7 @@ where \eqn{\{s_2,\ldots, s_p\}} are sets of summation indices  in (7), with \eqn
    \item{data}{An \code{n x n} matrix of costs/distances of the TSP (with \code{0}'s or \code{NA}s on the main diagonal). Costs/distances of the unconnected edges must be supplied as NA.}
    \item{labels}{An \code{n} vector of optional city labels. If not given, labels are taken from \code{data}.}
    \item{cluster}{Degree constraints can be checked in parallel using parLapply from the parallel package.
-      \code{cluster} is either \code{0} (default) for no parallel computing to be used; or \code{1} (default) for one less than the number of cores; or user-supplied cluster on which to do checking. a cluster here can be some cores of a single machine.}
+      \code{cluster} is either \code{0} (default) for no parallel computing to be used; or \code{1} for one less than the number of cores; or user-supplied cluster on which to do checking. a cluster here can be some cores of a single machine.}
     \item{upper_bound}{A positive integer, an upper bound of the tour length (cost function), if not supplied (default: \code{NULL}) heuristic solution is obtained using 
 
        \code{TSP::solve_TSP(data,method)}.}
@@ -107,7 +107,8 @@ where \eqn{\{s_2,\ldots, s_p\}} are sets of summation indices  in (7), with \eqn
    \item{coming_solutions}{a list of coming feasible tours obtained within \code{[lower_bound, upper_bound]}.}
   \item{coming_tour_lengths}{a vector of feasible tour length gone within \code{[lower_bound, upper_bound]}.}
   \item{iter}{a number of feasible tour length gone through}
-
+   \item{upper_bound}{an upper bound of the tour length}
+   \item{lower_bound}{a lower bound value of the tour lenght}
 }
 
 \author{
