@@ -1,3 +1,7 @@
+1.1-7
+* tsp_solver: fixed math rendering problems in the manual
+
+
 1.1-6 
 * tsp_solver: bug fixed with checking column-wise degree constraints  
 

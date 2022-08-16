@@ -51,7 +51,7 @@ The integer programming formulation of the assignment problem solved in Step 1 o
 
 For implementing Step 2, solutions of the corresponding subset sum problem should be enumerated. A subset sum problem formulation can be expressed as
 \deqn{  a_1s_1+a_2s_2+\ldots +a_ps_p=L, ~~~~~~~~(6)} 
-where \eqn{s_i \in \{0,1\},} \eqn{i=1,\ldots,p,$ $p=n(n-1)} is the number of unknown binary variables of the original TSP. \eqn{a_i} are positive integers matching the costs \eqn{c_{ij}} of the cost matrix \eqn{C.}
+where \eqn{s_i \in \{0,1\},} \eqn{i=1,\ldots,p, p=n(n-1)} is the number of unknown binary variables of the original TSP. \eqn{a_i} are positive integers matching the costs \eqn{c_{ij}} of the cost matrix \eqn{C.}
 
 Voinon and Nikulin (1997)  introduced an algorithm that enumerates all nonnegative integer solutions of equation (6) by using the corresponding generating
 function and the binomial theorem. 
